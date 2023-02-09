@@ -1,0 +1,35 @@
+.trending_page {
+  display: grid;
+  position: relative;
+  
+  .heading {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,0.7);
+    padding: 10px;
+    text-align: center;
+    box-sizing: border-box;
+    min-height: 70px;
+    color: white;
+    z-index: 2;
+  }
+  div {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(10px);
+    z-index: 5;
+    min-height: 200px;
+    padding: 10px ;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    p{
+        margin: 20px 0;
+    }
+  }
+}
