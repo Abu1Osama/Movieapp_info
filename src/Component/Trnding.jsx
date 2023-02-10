@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
+import Moviedetails from "./Moviedetails"
 import "./Trending.scss"
 export default function Trending(props) {
    let { title, poster_path, release_date,vote_average}=props.obj
@@ -12,7 +14,7 @@ setDetail("block")
      }
    
 return (
-
+<Link to={"/moviedetails"}>
 <div  onMouseLeave={detailsleave} onMouseEnter={details} className="trending_page">
     <img width={"100%"} style={{objectFit:"cover",height:"400px"}} src={poster_path} alt="" />
     <h3 className="heading">{title}</h3>
@@ -23,6 +25,8 @@ return (
     </div>
 </div>
 
+
+</Link>
 )
 
  

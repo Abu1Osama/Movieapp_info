@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Trending from "./Trnding";
 
 function Home({ props }) {
@@ -9,16 +9,18 @@ function Home({ props }) {
     setPage(page + 1);
   };
 
+  
   async function trendingMovies() {
     let res = await fetch(
       ` https://api.themoviedb.org/3/movie/popular?api_key=cd62bbe4e53a5038024d8cd788f6541b&language=en-US&page=${page}`
-    );
-    let data = await res.json();
+      );
+      let data = await res.json();
+      
+      setMovie(data.results);
+    }
+      trendingMovies();
+  
 
-    setMovie(data.results);
-  }
-
-  trendingMovies();
   return (
     <div
       style={{
@@ -35,9 +37,9 @@ function Home({ props }) {
           // title, imge, desc ,release_date
         />
       ))}
-      <a href="#" onClick={nextPage}>
+      <a style={{textDecoration:"none",fontSize:"20px",margin:"25px"}} href="#" onClick={nextPage}>
         {" "}
-        Page{page + 1}
+        Page{" "}{page + 1}
       </a>
     </div>
   );
