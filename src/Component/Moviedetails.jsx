@@ -1,22 +1,75 @@
-import { border } from '@chakra-ui/react'
-import React from 'react'
+import { border } from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
+import Trailer from "./Trailer";
+import "./moviedetail.css"
 
-function Moviedetails() {
-    const src="https://www.youtube.com/shorts/bUvoBfAPq2Q"
+function Moviedetails(props) {
+  const [key, setKey] = useState([]);
+  let { title, poster_path, release_date, vote_average, overview } = props.obj;
+  poster_path = "https://image.tmdb.org/t/p/w500/" + poster_path;
+  async function trailer() {
+    let res = await fetch(
+      `https://api.themoviedb.org/3/movie/${props.obj.id}/videos?api_key=7e47368dc262a55c9d2e8fbf9af6cfac&language=en-US`
+    );
+    let data = await res.json();
+
+    // console.log(data.results)
+    // console.log(props.id)
+    setKey(data.results);
+    // console.log(data.results);
+  }
+  useEffect(() => {
+    trailer();
+  }, []);
+
   return (
-    <div style={{display:"flex" ,width:"60%",margin:"auto",gap:"20px" ,border:"10px solid"}}>
-       <div  style={{width:"35%"}}>
-        <img style={{width:"100%" ,height:"550px", objectFit:"fill"}} src={"https://images.pexels.com/photos/1406764/pexels-photo-1406764.jpeg?auto=compress&cs=tinysrgb&w=600"} alt="" />
-
-       </div>
-       <div   style={{width:"55%",textAlign:"center",display:"flex",flexDirection:'column',justifyContent:"space-evenly"}}>
-        <h1 style={{ color:"teal"}}>Fight Club (1999)</h1>
-      <img  src="https://dl-file.cyberlink.com/web/upload-file/learning-center/enu/2022/10/Thumbnail_20221011024829917.jpg" alt="" />
     
-        <p>"Thirteen year old Sam Cleary suspects that his mysteriously reclusive neighbor Mr. Smith is actually the legendary vigilante Samaritan, who was reported dead 25 years ago. With crime on the rise and the city on the brink of chaos, Sam makes it his mission to coax his neighbor out of hiding to save the city from ruin."</p>
-       </div>
+    <div>
+      <div
+        style={{
+          display: "flex",
+          margin: "auto",
+          gap: "10px",
+          border: "10px solid",
+        }}
+      >
+        <div style={{ width: "75%" }}>
+          <img
+            style={{ width: "100%", height: "550px", objectFit: "fill" }}
+            src={poster_path}
+            alt=""
+          />
+        </div>
+        <div
+          style={{
+            width: "100%",
+            textAlign: "center",
+            display: "flex",
+            flexDirection: "column",
+            alignItems:"center",
+            gap:"20px",
+            fontSize:"20px",
+            background:"linear-gradient(to right, rgb(104 165 152) 0%, rgb(125 202 172) 51%, rgb(81 206 160) 100%)"
+            
+           
+          }}
+        >
+          <h1 style={{ color: "red" }}>{title}</h1>
+          <b>Release on:- { release_date}</b>
+          <b>Rating:- {vote_average}</b>
+          <span><h4>Overview:-</h4> <i style={{fontSize:"25px"}}>{overview}</i></span>
+         
+
+        </div>
+      </div>
+      <div className="frame">
+      {key.map((item) => (
+        <Trailer key={item.id} item={item} />
+      ))}
+      </div>
+      
     </div>
-  )
+  );
 }
 
-export default Moviedetails
+export default Moviedetails;

@@ -12,10 +12,14 @@ setDetail("block")
  const detailsleave=()=>{
     setDetail("none")
      }
+     const fortrailer=()=>{
+      props.setTrailerId(props.obj)
+      console.log(props.obj)
+     }
    
 return (
 <Link to={"/moviedetails"}>
-<div  onMouseLeave={detailsleave} onMouseEnter={details} className="trending_page">
+<div onClick={fortrailer} onMouseLeave={detailsleave} onMouseEnter={details} className="trending_page">
     <img width={"100%"} style={{objectFit:"cover",height:"400px"}} src={poster_path} alt="" />
     <h3 className="heading">{title}</h3>
     <div style={{display:detail}} >

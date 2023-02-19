@@ -1,0 +1,11 @@
+.frame{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* width: 100%; */
+    margin: 20px;
+
+}
+body{
+    background:linear-gradient(to right, #141201 0%,  #0f0d04  51%,  #0b0b06  100%);
+}
