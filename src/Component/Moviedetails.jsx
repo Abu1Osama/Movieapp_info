@@ -1,7 +1,9 @@
 import { border } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import Trailer from "./Trailer";
-import "./moviedetail.css"
+import "./moviedetail.css";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 
 function Moviedetails(props) {
   const [key, setKey] = useState([]);
@@ -23,9 +25,8 @@ function Moviedetails(props) {
   }, []);
 
   return (
-    
     <div>
-      <div
+      {/* <div
         style={{
           display: "flex",
           margin: "auto",
@@ -61,13 +62,31 @@ function Moviedetails(props) {
          
 
         </div>
+      </div> */}
+
+      <div style={{ marginBottom:"20px" }}>
+        <Card className="details_div" >
+          <div className="omg_div" style={{ width: "100%" }}>
+            <Card.Img style={{width:"100%", height:'500px',objectFit:'contain',margin:"auto" }} src={poster_path} />
+          </div>
+          <div >
+
+            <Card.Body className="align_text">
+            <button className="mainbtn ">
+              <Card.Title> <button className="ttb">{title}</button></Card.Title>
+              <Card.Text> <button className="dec"><span className="sp">Release on:-</span>{release_date}</button></Card.Text>
+              <Card.Text><button className="dec"><span className="sp">Rating:-</span>{release_date}</button></Card.Text>
+              <Card.Text> <button className="dec2">{overview}</button></Card.Text>
+            </button>
+            </Card.Body>
+          </div>
+        </Card>
       </div>
       <div className="frame">
-      {key.map((item) => (
-        <Trailer key={item.id} item={item} />
-      ))}
+        {key.map((item) => (
+          <Trailer key={item.id} item={item} />
+        ))}
       </div>
-      
     </div>
   );
 }

@@ -26,6 +26,7 @@ function Home(props ) {
         gridTemplateColumns: "repeat(auto-fill,300px)",
         gap: "20px",
         justifyContent: "center",
+        marginTop:"30px"
       }}
     >
       {movie.map((item) => (
@@ -43,7 +44,7 @@ function Home(props ) {
         onClick={nextPage}
       >
         {" "}
-        Page {page + 1}
+        <button className="pagi"> Page {page + 1}</button>
       </a>
     </div>
   );

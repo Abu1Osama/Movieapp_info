@@ -8,8 +8,8 @@ function Trailer(props) {
 // : 
 // "Trailer"
   return (
-    <div style={{margin:"10px" }}>
-    {type==="Trailer"?<iframe width="600" height="320" src={videosrc} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>:""}
+    <div style={{alignContent:"center" }}>
+    {type==="Trailer"?<iframe width="600px" height="500px" src={videosrc} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>:""}
     </div>
     
   )
