@@ -47,6 +47,10 @@
       "last 1 safari version"
     ]
   },
+  "engines": {
+    "node": "18.x",
+    "npm": "9.x"
+  },
   "overrides": {
     "vm2": "3.10.5"
   }
