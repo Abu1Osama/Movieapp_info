@@ -22,30 +22,63 @@ function Home(props ) {
   return (
     <div
       style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fill,300px)",
-        gap: "20px",
-        justifyContent: "center",
-        marginTop:"30px"
+        padding: "40px 20px",
+        maxWidth: "1400px",
+        margin: "0 auto",
       }}
     >
-      {movie.map((item) => (
-        <Trending
-          key={item.id}
-          obj={item}
-          setTrailerId={props.setTrailerId}
-          // fortrailer={props.fortrailer}
-          // title, imge, desc ,release_date
-        />
-      ))}
-      <a
-        style={{ textDecoration: "none", fontSize: "20px", margin: "25px" }}
-        href="#"
-        onClick={nextPage}
+      <div
+        style={{
+          textAlign: "center",
+          marginBottom: "48px",
+          padding: "32px 20px",
+        }}
       >
-        {" "}
-        <button className="pagi"> Page {page + 1}</button>
-      </a>
+        <h1
+          style={{
+            fontSize: "48px",
+            fontWeight: "800",
+            background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            marginBottom: "16px",
+            letterSpacing: "1px",
+          }}
+        >
+          Popular Movies
+        </h1>
+        <p
+          style={{
+            fontSize: "18px",
+            color: "rgba(255, 255, 255, 0.7)",
+            fontWeight: "400",
+          }}
+        >
+          Discover the latest and greatest films
+        </p>
+      </div>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+          gap: "32px",
+          marginBottom: "40px",
+          gridAutoRows: "1fr",
+        }}
+      >
+        {movie.map((item) => (
+          <Trending
+            key={item.id}
+            obj={item}
+            setTrailerId={props.setTrailerId}
+          />
+        ))}
+      </div>
+      <div style={{ textAlign: "center", marginTop: "40px" }}>
+        <button className="pagi" onClick={nextPage}>
+          Load More - Page {page + 1}
+        </button>
+      </div>
     </div>
   );
 }
